@@ -1,0 +1,60 @@
+CREATING A DATABASE:
+>> create database rgm;
+
+CREATING A TABLE:
+>> create table student (
+student_id int primary key not null,
+student_name varchar(20) not null,
+student_contact int not null,
+student_dept varchar(25) not null 
+);
+
+DISPLAYING OR VIEWING THE TABLE:
+>> select * from student;
+
+INSERTING VALUES INTO THE TABLE:
+>> INSERT INTO student (student_id,student_name,student_contact,student_dept)
+   VALUES (101,"Chandrakalavathi",939165056,"CSE");
+
+// another method of giving values into the columns
+>> INSERT INTO student VALUES (102,"Manjula",12345678,"CSE-DS");
+   INSERT INTO student VALUES (103,"Deepthi",94738783,"CSE-DS");
+   INSERT INTO student VALUES (104,"Manju",64753893,"CSE");
+   INSERT INTO student VALUES (105,"Anu",58763874,"CSE-BS");
+   INSERT INTO student VALUES (106,"Bhavi",5638588,"ECE");
+   INSERT INTO student VALUES (107,"Deepthi",94738783,"CSE-DS");
+   
+INSERTING MULTIPLE VALUES INTO TABLES AT A TIME:
+>> INSERT INTO student VALUES (108,"Bhavana",657638783,"CSE-AI"),(109,"Dinesh",6587346,"CIVIL"),(110,"Aarthi",9863583,"MECH");
+
+>> select * from student;          or select * from databasename.tablename;
+
+
+
+CLASS ASSIGNEMNT:
+
+CREATE database HeroVired;
+Create table RGM (
+ID int primary key not null,
+SName varchar(30) not null,
+College varchar(25) not null,
+Session varchar(20) not null,
+Contact int not null,
+Address varchar(30) not null
+);
+
+select * from RGM;
+
+
+
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (501,"Sreeja","RGM","Java",897546,"Nandyal")
+
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (502,"Priya","RGMCET","Python",8978576,"Kurnool");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (503,"Sreeja","GPREC","Python",897546,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (504,"Dinu","GPECT","Java",897546,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (505,"Bhavs","RGM","Fullstack",897546,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (506,"Deepu","SVR","Java",8834566,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (507,"Rithu","RGM","React",8933333,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (508,"Kavya","AVR","Java",897546,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (509,"Shreya","KSRM","Java",897546,"Nandyal");
+-- INSERT INTO RGM (ID,SName,College,Session,Contact,Address) VALUES (510,"Sreeja","GPREC","Python",897546,"Nandyal");

@@ -1,0 +1,174 @@
+-- to view the databases present 
+show databases;
+
+select * from RGM;
+
+-- update query (single value update)
+update RGM set SName="sirisha" where ID=510;
+-- update query (multiple value update)
+update RGM set SName="Preethi",Address="Kadapa" where ID=502;
+
+create table Test (
+ID int primary key not null,
+SName varchar(30) not null,
+College varchar(20) not null,
+Session varchar(25) not null,
+Contact int not null,
+Address varchar(20) not null);
+
+select * from Test;
+
+-- Copying the values of one table into other (Both tables must be of same database)
+insert into Test select * from RGM;
+
+-- copying the data from other table of different database
+insert into Test select * from databasename.tablename;
+
+-- To delete the data from the table
+truncate table Test;
+
+-- To delete a particular entry
+delete from RGM where SName="Shreya";
+
+-- To delete the complete table along with data
+drop table Test;
+
+-- To rename the exixting columns
+alter table RGM rename column Contact to Contact_No;
+
+-- To rename the table name
+alter table RGM rename  to RGMCET;
+
+select * from RGMCET;
+
+-- To drop a complete database
+drop database rgm;
+
+show databases;
+
+-- To add columns to existing table
+alter table RGMCET add Branch varchar(10); 
+
+-- To add the data into table
+update RGMCET set Branch="CSE" where ID=501;
+
+-- To change the datatype of the attributes
+alter table RGMCET modify column Address varchar(50);
+
+-- To drop the particular column
+alter table RGMCET drop column Branch;
+alter table RGMCET drop column Address,drop column Contact_No;  -- to drop multiple columns
+
+
+select * from student;
+
+-- BUILT IN FUNCTIONS
+
+-- To display min marks
+select min(marks) from student; 
+
+-- To display count
+select count(marks) from student;
+
+
+
+-- To display max marks
+select max(marks) from student;
+
+-- To display avg marks
+select avg(marks) from student;
+
+-- To display sum of marks
+select sum(marks) from student;
+select sum(marks) as Total from student;
+
+
+
+create database Exercise;
+
+create table customer(
+ID int primary key not null,
+Name varchar(20),
+City varchar(20),
+Grade int,
+Salesman_id int);
+
+select * from customer;
+
+insert into customer values(101,"Sirish","Banglore",169,5001);
+insert into customer values(102,"prudhvi","kerala",145,5002),(103,"karthik","Kolkata",134,5003),(104,"Brundha","AndhraPradesh",165,5004),(105,"Vishnu","Chennai",148,5005),
+(106,"Dinesh","Karnataka",156,5006),(107,"Vamshi","Rajasthan",187,5007),(108,"Lokesh","Gujarath",154,5008),(109,"Dheeru","Mumbai",187,5009),(110,"Sai","Odisha",145,5010);
+
+-- Query to find details of the customer whose grade > 100
+select * from customer where Grade > 100;
+
+-- Query to find details of the customer whose grade >= 100
+select * from customer where Grade >= 100;
+
+-- Query to find details of the customer whose grade in asc order
+select * from customer order by Grade asc; 
+select * from customer order by Grade desc; 
+
+-- Query to find details of the customer who are living in karnataka and grade <=100
+select * from customer where City="karnataka" and Grade<=100;
+
+-- Query to find details of the customer who are living in karnataka and grade >=150
+select * from customer where City="karnataka" and Grade>=150;
+
+-- Query to find details of the customer who are from Mumbai or have grade >=150
+select * from customer where City="Mumbai" or Grade>=150;
+
+-- Query to find details of the customer who are from kerala or who donot have grade more than 100
+select * from customer where City="Kerala" or not Grade>100;
+
+-- Query to identify customers who donto belong to city mumbai or have grades that exceeds 200
+select * from customer where City!="Mumbai" or Grade > 200;
+
+select * from customer where City!="Mumbai" and Grade > 200;
+
+-- Query to find details  excluding the date 30-04-2023 and salesman_id more than 5002 or purchase amount >2000
+
+create table orders(
+order_no int,
+purchase_amount int,
+order_date date,
+customer_id int,
+salesman_id int);
+
+update orders set purchase_amount=1234 where customer_id=2001;
+
+insert into orders values(101,2343,"2023-04-10",2001,5001),(102,6534,"2023-06-22",2002,5002),(103,6542,"2023-02-12",2003,5003),(104,5432,"2023-04-30",2004,5004),(105,7635,"2023-07-23",2005,5005);
+select * from orders;
+select * from orders where order_date!="2023-04-30" and salesman_id>5002 or purchase_amount>2000;
+
+create table salesman(
+salesman_id int, 
+Name varchar(20),
+City varchar(30),
+Commission float);
+
+select * from salesman;
+
+insert into salesman values(101,"Rishi","hyderabad",65.37),
+(102,"Ram","Banglore",36.75),
+(103,"Riyansh","kolkata",54.56),
+(104,"Vamshi","gujarath",87.98),
+(105,"Lokesh","Odisha",68.98);
+
+-- Query to display salesman details whose commissions are between 50 and 70
+select * from salesman where commission between 50 and 70;
+
+-- Query to find out salesamn name whose name start with r letter 
+select * from salesman where Name like "r%";
+
+-- Query to create a column adress insert values and display address as salesman address in desc order
+alter table salesman add column Address varchar(20);
+
+update salesman set Address="Bamglore" where salesman_id=101;
+update salesman set Address="Hyderabad" where salesman_id=102;
+update salesman set Address="Rajasthan" where salesman_id=103;
+update salesman set Address="kerala" where salesman_id=104;
+update salesman set Address="mumbai" where salesman_id=105;
+
+select * from salesman order by Address desc;
+select Address as salesman_address from salesman order by Address desc;
